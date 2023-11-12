@@ -66,6 +66,7 @@ export const BillCard = ({
     <Form onSubmit={formik.handleSubmit}>
       {deletable && <DeleteButton handleDelete={handleDelete} id={bill.id} />}
       <NumericFormat
+        label="Amount"
         name="amount"
         prefix="$"
         thousandSeparator="."
@@ -92,6 +93,9 @@ export const BillCard = ({
           sx: {
             color: "#003566",
             textTransform: "capitalize",
+            left: "50%",
+            top: "-20%",
+            transform: "translate(-50%)",
           },
         }}
         inputProps={{
