@@ -62,7 +62,7 @@ function App() {
             bill={bill}
             handleStateSave={handleStateSave}
             setIsValidated={setIsValidated}
-            deletable={bill.id !== bills[0].id}
+            deletable={Boolean(bills.length - 1)}
             handleDelete={handleDelete}
           />
         ))}

@@ -181,6 +181,7 @@ export const BillCard = ({
             error={formik.touched.payee && Boolean(formik.errors.payee)}
             sx={{
               width: "600px",
+              fontWeight: "bold",
             }}
           >
             <MenuItem value="userId1">Payee Name</MenuItem>
@@ -227,8 +228,22 @@ export const BillCard = ({
               width: 400,
             }}
           >
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
+            <MenuItem value="repeat1">
+              Every Two Month, until{" "}
+              {`${formik.values.date.toLocaleDateString("en-US", {
+                month: "short",
+                day: "numeric",
+                year: "numeric",
+              })}`}
+            </MenuItem>
+            <MenuItem value="repeat2">
+              Every Four Month, until{" "}
+              {`${formik.values.date.toLocaleDateString("en-US", {
+                month: "short",
+                day: "numeric",
+                year: "numeric",
+              })}`}
+            </MenuItem>
           </Select>
           {formik.touched.repeat && formik.errors.repeat && (
             <FormHelperText
