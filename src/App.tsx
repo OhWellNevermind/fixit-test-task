@@ -90,6 +90,7 @@ function App() {
             justifyContent: "center",
             alignItems: "center",
             gap: "5px",
+            marginBottom: "15px",
           }}
           variant="outlined"
         >
