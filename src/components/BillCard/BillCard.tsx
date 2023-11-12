@@ -19,6 +19,8 @@ import { fromAccounts } from "../../data/fromAccounts.js";
 import { billType, stateSchema } from "../../types/stateTypes.js";
 import { DeleteButton } from "../DeleteButton/DeleteButton.js";
 
+const NOTE_LIMIT = 31;
+
 const billSchema = yup.object({
   amount: yup.string().required("Amount is required field"),
   fromAccount: yup.string().required("Please select an account"),
@@ -257,12 +259,12 @@ export const BillCard = ({
         <TextField
           name="note"
           inputProps={{
-            maxLength: 31,
+            maxLength: NOTE_LIMIT,
           }}
           sx={{ width: 400 }}
           helperText={
             (formik.touched.note && formik.errors.note) ||
-            `${formik.values.note.length}/${31}`
+            `${formik.values.note.length}/${NOTE_LIMIT}`
           }
           onChange={formik.handleChange}
           onBlur={handleBlur}

@@ -1,8 +1,10 @@
 import { BillCard } from "./components/BillCard/BillCard";
-import { Container } from "@mui/material";
+import { Alert, Container } from "@mui/material";
 import { stateSchema } from "./types/stateTypes";
 import { Button } from "@mui/material";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
+
+const BILLS_LIMIT = 5;
 
 import { useState } from "react";
 
@@ -54,6 +56,7 @@ function App() {
           justifyContent: "center",
           alignItems: "center",
           flexDirection: "column",
+          paddingBottom: 10,
         }}
       >
         {bills.map((bill) => (
@@ -69,7 +72,7 @@ function App() {
 
         <Button
           onClick={() => {
-            if (bills.length === 5) {
+            if (bills.length === BILLS_LIMIT) {
               setReachedLimit(true);
               return;
             }
@@ -93,6 +96,9 @@ function App() {
           <AddRoundedIcon />
           Add Another Bill
         </Button>
+        {reachedLimit && (
+          <Alert severity="warning">You reached to the limit of bills</Alert>
+        )}
       </Container>
     </>
   );
